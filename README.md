@@ -14,7 +14,4 @@ $ node .
 - Run `gulp` and start the addon
 - Will reload on changes to files in client/js
 
-https://stormy-ocean-8497.herokuapp.com/
-(may be flaky... it's heroku)
-
 ![alt tag](https://raw.github.com/IRog/obj_three_displayer/master/sample.png)
