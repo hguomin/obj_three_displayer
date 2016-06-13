@@ -1,10 +1,12 @@
-var loopback = require('loopback');
-var app = module.exports = loopback();
-var bodyParser = require('body-parser');
-var compression = require('compression');
+'use strict';
+
+const loopback = require('loopback');
+const app = module.exports = loopback();
+const bodyParser = require('body-parser');
+const compression = require('compression');
 
 // Setup the view engine (jade)
-var path = require('path');
+const path = require('path');
 app.set('views', path.join(__dirname, '../client/views'));
 app.set('view engine', 'jade');
 
@@ -18,7 +20,7 @@ app.middleware('parse', bodyParser.urlencoded({
 // compress all requests
 app.use(compression())
 
-app.get('/', function (req, res, next) {
+app.get('/', (req, res, next) => {
   res.render('pages/index', {
     heroku: process.env.HEROKU
   });
@@ -40,9 +42,9 @@ app.use(loopback.errorHandler());
 
 app.start = function() {
   // start the web server
-  return app.listen(process.env.PORT || 3000, function() {
+  return app.listen(process.env.PORT || 3000, () => {
     app.emit('started');
-    console.log('Web server listening at: %s', app.get('url'));
+    console.log(`Web server listening at: ${app.get('url')}`);
   });
 };
 
